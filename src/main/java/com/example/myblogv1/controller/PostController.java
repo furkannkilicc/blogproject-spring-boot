@@ -4,6 +4,7 @@ import com.example.myblogv1.requests.PostCreateRequest;
 import com.example.myblogv1.requests.PostUpdateRequest;
 import com.example.myblogv1.responses.PostResponse;
 import com.example.myblogv1.services.PostService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.example.myblogv1.entities.Post;
 

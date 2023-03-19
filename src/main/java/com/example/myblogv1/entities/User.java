@@ -17,8 +17,9 @@ public class User {
     Long id;
     String name;
     String surname;
-    @JsonIgnore
+//    @JsonIgnore
      String password;
+     String username;
 //    @DateTimeFormat(pattern = "dd-MM-yyyy")
 //    private Date created;
 //
@@ -27,9 +28,12 @@ public class User {
 //      @Temporal(TemporalType.TIMESTAMP)
 //      Date createDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="roles")
-    Role  roles;
+
+    private String roles;
+
+//    @Enumerated(EnumType.STRING)
+//    @Column(name="roles")
+//    Role  roles;
 
 
    @OneToMany(fetch = FetchType.LAZY , mappedBy = "user")

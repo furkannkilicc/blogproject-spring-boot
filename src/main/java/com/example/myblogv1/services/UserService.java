@@ -2,6 +2,7 @@ package com.example.myblogv1.services;
 
 import com.example.myblogv1.entities.User;
 import com.example.myblogv1.repos.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,15 +11,17 @@ import java.util.Optional;
 @Service
 
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+//    private final PasswordEncoder passwordEncoder;
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
     public User getOneUserById(Long userId){
         return  userRepository.findById(userId).orElse(null);
     }
-
+//TODO:PASSWORD ENCODER BEAN EKLENDİ SECURITYCONFIG DE TANIMLANDI BCRYPT
     public User AddUser(User newUser) {
+//        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
         return  userRepository.save(newUser);
     }
 
@@ -42,5 +45,8 @@ public class UserService {
 
         }else
             return  null;
+    }
+    public User getOneUserByUserName(String username){
+        return userRepository.findByUsername(username);
     }
 }
